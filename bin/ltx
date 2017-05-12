@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e
+#set -x
+
+STARTDIR="`readlink -e "$PWD"`"
+
+if [[ -z "$1" || ! -f "$1" ]] ;then
+    1>&2 echo Specify input tex file.
+    exit 10
+fi
+FILENAME="$1"
+
+
+FULLFILENAME="`readlink -e "$FILENAME"`"
+DFILENAME="`dirname "$FULLFILENAME"`"
+if [ "$DFILENAME" != "$STARTDIR" ] ;then
+    1>&2 echo Sorry, this script accept the .tex file only from the current directory.
+    exit 11
+fi
+FFILENAME="`basename "$FULLFILENAME"`"
+
+
+
+set -u
+TMPDIR="/tmp/lualatex_`id -u`/$FFILENAME".dir
+mkdir -p "$TMPDIR"
+
+nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+
+
+if <"$FILENAME" grep -q '\\cite\|\\nocite' ;then
+    cd "$TMPDIR"
+    BIBINPUTS="$DFILENAME" bibtex "${FFILENAME%.tex}"
+
+    cd "$DFILENAME"
+    nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+    if <"$TMPDIR/${FILENAME%.tex}.log" grep -q 'LaTeX Warning: Citation `[a-zA-Z0-9]\+'\'' on page [0-9]\+ undefined on input line [0-9]\+.' ;then
+        nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+    fi
+fi
+
+
+if <"$TMPDIR/${FILENAME%.tex}.log" grep -q 'Rerun to get cross-references right.' ;then
+    nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+fi
+
+
+echo -ne '\n\n\n'
+<"$TMPDIR/${FILENAME%.tex}.log" grep 'LaTeX Warning: ' || true
+echo -ne '\n'
+
+
+mv "$TMPDIR"/*.pdf "$DFILENAME"
+
