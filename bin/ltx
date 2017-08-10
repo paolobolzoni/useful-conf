@@ -46,7 +46,7 @@ fi
 
 
 echo -ne '\n\n\n'
-<"$TMPDIR/${FILENAME%.tex}.log" grep 'LaTeX Warning: ' || true
+<"$TMPDIR/${FILENAME%.tex}.log" grep -i -e 'warning' -e 'underf' -e 'overf' || true
 echo -ne '\n'
 
 

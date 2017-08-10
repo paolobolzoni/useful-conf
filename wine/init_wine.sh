@@ -12,21 +12,21 @@
 # MSCOREE and MSHTML are disabled by default!
 
 set -e
-set -u
 set -x
 
 STARTPWD="`readlink -e "$PWD"`"
-
-export WINEPREFIX="$STARTPWD"/wine
-export WINEDLLOVERRIDES="mscoree,mshtml="
-export XDG_CONFIG_HOME="$WINEPREFIX"/xdg_conf
-export XDG_DATA_HOME="$WINEPREFIX"/xdg_home
 # winetricks cache directory is shared
 if [ x"$XDG_CACHE_HOME" = x ] ;then
     XDG_CACHE_HOME_BAK="$HOME"/.cache
 else
     XDG_CACHE_HOME_BAK="$XDG_CACHE_HOME"
 fi
+
+set -u
+export WINEPREFIX="$STARTPWD"/wine
+export WINEDLLOVERRIDES="mscoree,mshtml="
+export XDG_CONFIG_HOME="$WINEPREFIX"/xdg_conf
+export XDG_DATA_HOME="$WINEPREFIX"/xdg_home
 export XDG_CACHE_HOME="$WINEPREFIX"/xdg_cache
 export WINEARCH=win32
 export LC_ALL=C
