@@ -1,0 +1,31 @@
+The recipient has to execute the command first.
+
+The pv command can be skipped completely as it simply show
+informations about how much data has been transmitted and
+about the speed.
+
+The commands are for the BSD version, the others might be
+different.
+
+
+
+Plain-text, ie, without cryptography:
+
+Recipient:
+$ netcat -l <PORT>  |  pv -btrap  |  tar xf -
+
+Sender:
+$ tar  cf -  --owner=0 --group=0   <FILENAME> [<FILENAME> ...] | pv -tbrap | netcat <IP-ADDRESS> <PORT>
+
+
+
+With cryptography, of course the two passwords must be the same:
+
+Recipient:
+$ echo -n '<PASSWORD>' > ~/password.txt
+$ netcat -l <PORT>  |  openssl aes-256-cbc -salt -d -pass file:~/password.txt  |  pv -btrap  |  tar xf -
+
+Sender:
+$ echo -n '<PASSWORD>' > ~/password.txt
+$ tar cf -   --owner=0 --group=0   <FILENAME> [<FILENAME> ...]  |  openssl aes-256-cbc -salt -pass file:~/password.txt  |  pv -tbrap  |  netcat <IP-ADDRESS> <PORT>
+
