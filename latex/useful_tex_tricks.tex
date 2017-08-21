@@ -101,12 +101,21 @@ in his own paragraph\ldots
 }
 
 \vskip5mm
-Acronyms longer than three letters should be in \texttt{\textbackslash{}smaller} from the
+Acronyms longer than three letters should be in \texttt{\textbackslash{}smaller[0.5]} from the
 \texttt{relsize} package.
+
+E.g.: The ETA for the party supplies is soon. As usual BYOB we have
+plenty of food!  Let us know if you manage to come ASAP, seriously
+RSVP. (no change)
+
+E.g.: The ETA for the party supplies is soon. As usual {\smaller[0.5]BYOB} we have
+plenty of food!  Let us know if you manage to come {\smaller[0.5]ASAP}, seriously
+{\smaller[0.5]RSVP}. (smaller 0.5)
 
 E.g.: The ETA for the party supplies is soon. As usual {\smaller BYOB} we have
 plenty of food!  Let us know if you manage to come {\smaller ASAP}, seriously
-{\smaller RSVP}.
+{\smaller RSVP}. (smaller 1)
+
 
 \vskip5mm
 Most \LaTeX{} control characters can be written with
