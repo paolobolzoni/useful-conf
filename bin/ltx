@@ -14,41 +14,47 @@ FILENAME="$1"
 FULLFILENAME="`readlink -e "$FILENAME"`"
 DFILENAME="`dirname "$FULLFILENAME"`"
 if [ "$DFILENAME" != "$STARTDIR" ] ;then
-    1>&2 echo Sorry, this script accept the .tex file only from the current directory.
+    1>&2 echo Sorry, this script accepts the .tex file only from the current directory.
     exit 11
 fi
 FFILENAME="`basename "$FULLFILENAME"`"
 
 
-
 set -u
+
+
 TMPDIR="/tmp/lualatex_`id -u`/$FFILENAME".dir
 mkdir -p "$TMPDIR"
 
-nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+nice -19 lualatex --interaction=nonstopmode --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FFILENAME"
+mv "$TMPDIR"/*.pdf "$DFILENAME"
 
 
-if <"$FILENAME" grep -q '\\cite\|\\nocite' ;then
+if <"$FFILENAME" grep -q '\\cite\|\\nocite' ;then
     cd "$TMPDIR"
     BIBINPUTS="$DFILENAME" bibtex "${FFILENAME%.tex}"
 
     cd "$DFILENAME"
-    nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
-    if <"$TMPDIR/${FILENAME%.tex}.log" grep -q 'LaTeX Warning: Citation `[a-zA-Z0-9]\+'\'' on page [0-9]\+ undefined on input line [0-9]\+.' ;then
-        nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+    nice -19 lualatex --interaction=nonstopmode --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FFILENAME"
+    mv "$TMPDIR"/*.pdf "$DFILENAME"
+    if <"$TMPDIR/${FFILENAME%.tex}.log" grep -q 'LaTeX Warning: Citation `[a-zA-Z0-9]\+'\'' on page [0-9]\+ undefined on input line [0-9]\+.' ;then
+        nice -19 lualatex --interaction=nonstopmode --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FFILENAME"
+        mv "$TMPDIR"/*.pdf "$DFILENAME"
     fi
 fi
 
 
-if <"$TMPDIR/${FILENAME%.tex}.log" grep -q 'Rerun to get cross-references right.' ;then
-    nice -19 lualatex --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FILENAME"
+if <"$TMPDIR/${FFILENAME%.tex}.log" grep -q 'Rerun to get cross-references right.' ;then
+    nice -19 lualatex --interaction=nonstopmode --halt-on-error --file-line-error --output-directory="$TMPDIR" "$FFILENAME"
+    mv "$TMPDIR"/*.pdf "$DFILENAME"
 fi
 
+clear
+echo "$TMPDIR"'  (temp files dir)'
 
-echo -ne '\n\n\n'
-<"$TMPDIR/${FILENAME%.tex}.log" grep -i -e 'warning' -e 'underf' -e 'overf' || true
+echo -ne '\n'
+<"$TMPDIR/${FFILENAME%.tex}.log" grep -i -e 'warning: ' -e 'overf' -e 'underf' || true
 echo -ne '\n'
 
 
-mv "$TMPDIR"/*.pdf "$DFILENAME"
 
