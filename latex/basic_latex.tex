@@ -4,22 +4,27 @@
 
 \usepackage{easy-todo}
 \usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+
 \usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref} %working, nice hyperlinks
-\usepackage[hypcap]{caption}                               %correctly links to pictures (not to captions)
+\usepackage[figure, figure*, table, table*]{hypcap} %hyperlinks link to the TOP of figures or tables instead to the caption
 
 
 %
 % FONT CONFIGURATION
 %
+
 \usepackage{lmodern} %arbitrary sized fonts
 % OR
 %\usepackage{mathptmx} %uses LaTeX times
+
 % OR
 %\usepackage{stix} % Stix fonts
+
 % OR
 %\usepackage[nomath]{stix} %Stix fonts with Concrete Mathematics math font
 %\usepackage{amsmath}
 %\usepackage[euler-digits,euler-hat-accent]{eulervm}
+
 % OR
 %\usepackage{fontspec} %any other font
 %\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
@@ -65,6 +70,17 @@ pdfinfo={
 \renewcommand{\dblfloatpagefraction}{0.7}   % require fuller float pages
 % remember to use [htp] or [htpb] for placement
 
+\makeatletter
+\def\old@comma{,}
+\catcode`\,=13
+\def,{%
+  \ifmmode%
+    \old@comma\discretionary{}{}{}%
+  \else%
+    \old@comma%
+  \fi%
+}
+\makeatother
 
 
 \begin{document}
