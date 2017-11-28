@@ -51,7 +51,6 @@ pdfinfo={
 \spacefactor1000 }
 
 
-\usepackage[framemethod=tikz]{mdframed}
 
 
 \usepackage{fancyvrb,xcolor}
@@ -62,6 +61,17 @@ pdfinfo={
 \renewcommand{\LettrineTextFont}{\rmfamily}
 
 
+
+\usepackage{tikz}
+\newlength{\scaledx}
+\newlength{\scaledy}
+\newcommand\SetScales{%
+  \pgfpointxy{1}{1}%
+  \pgfextractx{\scaledx}{}%
+  \pgfextracty{\scaledy}{}%
+}
+
+\usepackage[framemethod=tikz]{mdframed}
 
 \makeatletter
 \newcommand\thefontsize[1]{{#1 The current font size is: \f@size pt\par}}
@@ -135,7 +145,8 @@ normal-sized text off these lines. This keeps the left and top margins of the
 paragraph flush.  In~modern browsers, this can be done with a combination of
 HTML and CSS by~using the float: left; setting.
 
-You can get the standard font sizes in points using a simple macro:
+You can get the standard font sizes in points using a simple macro, it is
+seldom useful to match requested styles.
 
 tiny: \thefontsize\tiny
 scriptsize: \thefontsize\scriptsize
@@ -149,6 +160,13 @@ huge: \thefontsize\huge
 Huge: \thefontsize\Huge
 
 
+The \emph{LaTeX Font Warning: Size substitutions with differences} \LaTeX{}
+warning message can be fixed by \textbackslash{}\{anyfontsize\} that
+\emph{scales} the nearest font to correct size. Scaling fonts is not advisable,
+but it is a good feedback after trying other solutions.
+
+
+
 \url{http://latexcolor.com/} is a website with many standard colors ready to be copied
 and pasted in the \LaTeX{} document.
 
@@ -156,12 +174,13 @@ and pasted in the \LaTeX{} document.
 use weaker justification rules. To try before re-wording for paragraphs where
 there is a under/overful box.
 
-Algorithm2e is not encoded in utf8, so it does not work with LuaLaTeX,
-you can easily convert with \texttt{iconv} though.
+Algorithm2e is not encoded in utf8, so it does not work with LuaLaTeX, you can
+easily convert with \texttt{iconv} though. Just execute this command in the tex
+file directory.
 \begin{verbatim}
->algorithm2e.sty                    \\
-iconv  -f ISO_8859-1  -t utf8       \\
-/usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty 
+$ >algorithm2e.sty                    \\
+  iconv  -f ISO_8859-1  -t utf8       \\
+  /usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 \end{verbatim}
 
 It is easy and seldom useful to setup manually the math style.
@@ -172,6 +191,18 @@ It is easy and seldom useful to setup manually the math style.
 \mathrm{scriptscriptstyle}\quad \scriptscriptstyle f(x) = \sum_{i=0}^{n} \frac{a_i}{1+x}
 \end{eqnarray*}
 
+
+It is often useful to have lengths based on the current tiks picture scale.  The
+new SetScales command (in the preamble) gives them.
+
+\begin{tikzpicture}[
+    x=30pt,
+    y=60pt,
+  ]
+  \SetScales
+  \node[draw] at (0,0) { \the\scaledx };
+  \node[draw] at (1,1) { \the\scaledy };
+\end{tikzpicture}
 
 \end{document}
 
