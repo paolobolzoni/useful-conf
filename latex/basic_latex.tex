@@ -1,20 +1,17 @@
 \documentclass{article} %just example
 \usepackage[a4paper]{geometry}
 
-
 \usepackage{easy-todo}
 \usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
 
-\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref} %working, nice hyperlinks
-\usepackage[figure, figure*, table, table*]{hypcap} %hyperlinks link to the TOP of figures or tables instead to the caption
 
 
 %
 % FONT CONFIGURATION
 %
-% To enable after trying other possibilities to fix
+% To enable (after trying other possibilities) to fix
 % -- LaTeX Font Warning: Size substitutions with differences --
-% by scaling
+% by scaling fonts
 %\usepackage{anyfontsize}
 
 \usepackage{lmodern} %arbitrary sized fonts
@@ -37,23 +34,6 @@
 %\setmonofont{Cousine}
 \selectfont
 
-
-\hypersetup{
-pdfinfo={
-    %Output-pdf metadata
-    Title={},
-    Subject={},
-    Author={},
-    Creator={},
-    Producer={},
-    %Empty creation or mod date means current date,
-    %we keep a space as placeholder.
-    CreationDate={ },
-    ModDate={ },
-} }
-%The field PTEX.Fullbanner cannot modified from the source
-%you can remove (or alter) it with pdftk:
-%  $ echo -ne 'InfoBegin\nInfoKey: PTEX.Fullbanner\nInfoValue: \n' | pdftk input.pdf update_info - output output.pdf
 
 
 % Alter some LaTeX defaults for better treatment of figures:
@@ -87,6 +67,27 @@ pdfinfo={
 }
 \makeatother
 
+
+
+% THIS PART SHOULD STAY NEARBY BEGIN DOCUMENT
+\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref} %working, nice hyperlinks
+\usepackage[figure, figure*, table, table*]{hypcap} %hyperlinks link to the TOP of figures or tables instead to the caption
+\hypersetup{
+pdfinfo={
+    %Output-pdf metadata
+    Title={},
+    Subject={},
+    Author={},
+    Creator={},
+    Producer={},
+    %Empty creation or mod date means current date,
+    %we keep a space as placeholder.
+    CreationDate={ },
+    ModDate={ },
+} }
+%The field PTEX.Fullbanner cannot modified from the source
+%you can remove (or alter) it with pdftk:
+%  $ echo -ne 'InfoBegin\nInfoKey: PTEX.Fullbanner\nInfoValue: \n' | pdftk input.pdf update_info - output output.pdf
 
 \begin{document}
 
