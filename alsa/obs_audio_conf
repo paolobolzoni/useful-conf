@@ -1,0 +1,94 @@
+# ~/.asoundrc ideas to record and hear audio in OBS
+#
+# snd_aloop module has to be loaded
+# $ sudo modprobe snd_aloop
+
+
+# OBS can read from here
+pcm.obs_microphone {
+  type plug
+  slave.pcm "hw:Loopback,1,0"
+}
+
+
+# the 4 channel in input got split to
+# loopback and the real hardware
+pcm.obs_splitter {
+  type multi;
+  slaves {
+#      a { channels 2 pcm "null" }
+      a { channels 2 pcm "hw:PCH" } 
+      b { channels 2 pcm "hw:Loopback,0,0" }
+  }
+  bindings {
+      0 { slave a channel 0 }
+      1 { slave a channel 1 }
+      2 { slave b channel 0 }
+      3 { slave b channel 1 }
+  }
+}
+
+
+# obs card, it has four channels used
+# to duplicate left and right channel
+pcm.obs_card {
+  slave {
+    pcm "obs_splitter"
+    channels 4
+  }
+
+  type route
+  ttable.0.0 1
+  ttable.1.1 1
+  ttable.0.2 1
+  ttable.1.3 1
+
+  hint {
+    show on
+    description "OBS card"
+  }
+}
+
+
+# setup default output card with a env variable
+pcm.!default {
+  type plug
+  slave.pcm {
+    @func getenv
+    vars [ ALSAPCM ]
+    default "pcm.smix"
+  }
+  hint {
+    show on
+    description "Default ALSA Output"
+  }
+}
+
+
+# a simple full-duplex pcm with software mixing
+pcm.smix {
+  type asym
+
+  playback.pcm {
+    type dmix
+    ipc_key 9175930  # ipc_keys must be unique
+    ipc_key_add_uid true
+    slave.pcm {
+       @func getenv
+       vars [ ALSAPCMHW ]
+       default "hw:PCH"
+    }
+  }
+
+  capture.pcm {
+    type dsnoop
+    ipc_key 5978293
+    ipc_key_add_uid yes
+    slave.pcm {
+       @func getenv
+       vars [ ALSAPCMHW ]
+       default "hw:PCH"
+    }
+  }
+}
+
