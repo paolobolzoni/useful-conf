@@ -176,11 +176,11 @@ there is a under/overful box.
 
 Algorithm2e is not encoded in utf8, so it does not work with LuaLaTeX, you can
 easily convert with \texttt{iconv} though. Just execute this command in the tex
-file directory.
+source file directory.
 \begin{verbatim}
-$ >algorithm2e.sty                    \\
-  iconv  -f ISO_8859-1  -t utf8       \\
-  /usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+$ iconv  -f ISO_8859-1  -t utf8       \\
+  /usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty \\
+  >algorithm2e.sty
 \end{verbatim}
 
 It is easy and seldom useful to setup manually the math style.
