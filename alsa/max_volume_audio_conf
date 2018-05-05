@@ -1,0 +1,68 @@
+pcm.!default {
+  type plug
+  slave.pcm {
+    @func getenv
+    vars [ ALSAPCM ]
+    default "pcm.smix"
+  }
+  hint {
+    show on
+    description "Default ALSA Output"
+  }
+}
+
+
+pcm.smix {
+  type asym
+
+  playback.pcm {
+    type dmix
+    ipc_key 9175930  # ipc_keys must be unique
+    ipc_key_add_uid true
+    slave.pcm {
+       @func getenv
+       vars [ ALSAPCMHW ]
+       default "hw:PCH"
+    }
+  }
+
+  capture.pcm {
+    type dsnoop
+    ipc_key 5978293
+    ipc_key_add_uid yes
+    slave.pcm {
+       @func getenv
+       vars [ ALSAPCMHW ]
+       default "hw:PCH"
+    }
+  }
+}
+
+
+pcm.fixvol {
+  type ladspa
+  slave.pcm "ladcomp_limiter"
+  path "/usr/lib/ladspa"
+  plugins [{
+    label dysonCompress
+    #peak limit, release time, fast ratio, ratio
+    input.controls [ 0 1 0.5 0.99 ]
+  }]
+}
+
+
+pcm.ladcomp_limiter {
+  type ladspa
+  slave.pcm {
+    type plug
+    slave.pcm "pcm.smix"
+  }
+  path "/usr/lib/ladspa"
+  plugins [{
+    label fastLookaheadLimiter
+    #InputGain(Db) -20 -> +20 ; Limit (db) -20 -> 0 ; Release time (s) 0.01 -> 2
+    #also possible... 20 0 0.8
+    input.controls [ 10 0 0.8  ]
+  }]
+}
+
