@@ -1,0 +1,28 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+shopt -s autocd
+shopt -s checkwinsize
+shopt -s histappend
+shopt -s cmdhist
+
+export NEMUROOT=/home/paolo/project/nemu/nemu.d
+alias nemu="$NEMUROOT/nemu.py"
+
+alias ls='ls --color=auto'
+alias ll='ls -Al'
+alias s='xdg-open'
+
+function nonzero_return() {
+	RETVAL=$?
+	[ $RETVAL -ne 0 ] && echo "$RETVAL"
+}
+export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
+
+
+[ -z "$TMUX" ] && /usr/bin/tmux
+[ -n "$TMUX" ] && alias reset='stty sane && reset && tmux clear-history'
