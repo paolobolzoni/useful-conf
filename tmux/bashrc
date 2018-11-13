@@ -1,14 +1,13 @@
-#
 # ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
 
 shopt -s autocd
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s cmdhist
+
 
 export NEMUROOT=/home/paolo/project/nemu/nemu.d
 alias nemu="$NEMUROOT/nemu.py"
@@ -16,6 +15,7 @@ alias nemu="$NEMUROOT/nemu.py"
 alias ls='ls --color=auto'
 alias ll='ls -Al'
 alias s='xdg-open'
+alias g++='g++ -std=c++14 -Wall -Wextra -pedantic -Wredundant-decls -Wdisabled-optimization -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -Wold-style-cast -Wzero-as-null-pointer-constant -Werror=return-type'
 
 function nonzero_return() {
 	RETVAL=$?
@@ -24,5 +24,8 @@ function nonzero_return() {
 export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
 
 
-[ -z "$TMUX" ] && /usr/bin/tmux
-[ -n "$TMUX" ] && alias reset='stty sane && reset && tmux clear-history'
+
+[ -z "$TMUX" ] && /usr/bin/tmux && return
+
+# tmux only commands
+alias reset='stty sane && reset && tmux clear-history'
