@@ -1,13 +1,17 @@
 # ~/.bashrc
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 shopt -s autocd
 shopt -s checkwinsize
-shopt -s histappend
 shopt -s cmdhist
 
+# Make bash history behave
+export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+shopt -s histappend
+
+export PATH="$PATH":"$HOME"/bin
 
 export NEMUROOT=/home/paolo/project/nemu/nemu.d
 alias nemu="$NEMUROOT/nemu.py"
@@ -22,7 +26,6 @@ function nonzero_return() {
 	[ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
-
 
 
 [ -z "$TMUX" ] && /usr/bin/tmux && return
