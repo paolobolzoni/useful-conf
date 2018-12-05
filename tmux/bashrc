@@ -5,12 +5,14 @@
 
 shopt -s autocd
 shopt -s checkwinsize
-shopt -s histappend
 shopt -s cmdhist
 
+export HISTCONTROL=ignoredups:erasedups
+#export HISTSIZE=10000
+#export HISTFILESIZE=10000
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-export NEMUROOT=/home/paolo/project/nemu/nemu.d
-alias nemu="$NEMUROOT/nemu.py"
 
 alias ls='ls --color=auto'
 alias ll='ls -Al'
@@ -18,8 +20,8 @@ alias s='xdg-open'
 alias g++='g++ -std=c++14 -Wall -Wextra -pedantic -Wredundant-decls -Wdisabled-optimization -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -Wold-style-cast -Wzero-as-null-pointer-constant -Werror=return-type'
 
 function nonzero_return() {
-	RETVAL=$?
-	[ $RETVAL -ne 0 ] && echo "$RETVAL"
+    RETVAL=$?
+    [ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
 
