@@ -1,7 +1,7 @@
 # ~/.bashrc
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
 
 shopt -s autocd
 shopt -s checkwinsize
@@ -13,7 +13,6 @@ export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-
 alias ls='ls --color=auto'
 alias ll='ls -Al'
 alias s='xdg-open'
@@ -24,7 +23,6 @@ function nonzero_return() {
     [ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
-
 
 
 [ -z "$TMUX" ] && /usr/bin/tmux && return
