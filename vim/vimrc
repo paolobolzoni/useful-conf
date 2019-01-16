@@ -1,0 +1,84 @@
+set nocompatible
+filetype off
+
+" plugins here?
+
+syntax on
+filetype indent off
+
+" Put intent only to "same starting column of the previous line"
+set autoindent
+set nocindent
+set nosmartindent
+set indentexpr=
+
+let mapleader = ","
+
+" Security
+set modelines=0
+set number
+set ruler
+
+" Blink cursor on error instead of beeping
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace, CTRL-V Tab will insert a literal tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+
+" Show invisible characters
+set listchars=tab:▸\ ,eol:¬,nbsp:⍽,trail:␣,extends:>,precedes:<
+set list
+
+noremap <F1> nop
+nnoremap <cr> o<esc>
+
+nnoremap ; :
+nnoremap : ;
+nnoremap <bs> <c-u>
+nnoremap <space> <c-d>
+
+" Formatting
+map <leader>q gqip
+
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
