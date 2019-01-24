@@ -6,7 +6,7 @@ filetype off
 syntax on
 filetype indent off
 
-" Put intent only to "same starting column of the previous line"
+" Put indent to "same starting column of the previous line"
 set autoindent
 set nocindent
 set nosmartindent
@@ -19,13 +19,10 @@ set modelines=0
 set number
 set ruler
 
-" Blink cursor on error instead of beeping
-set visualbell
-
 " Encoding
 set encoding=utf-8
 
-" Whitespace, CTRL-V Tab will insert a literal tab
+" Use whitespaces, CTRL-V Tab will insert a literal tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
