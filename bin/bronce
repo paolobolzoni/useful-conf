@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+i=0
+
+while true ;do
+  if [ ! -e /home/paolo/browsers/bronce"$i" ] ;then
+    DIR=/home/paolo/browsers/bronce"$i"
+    break
+  fi
+  i=$((1+i))
+done
+
+function rmdata {
+  rm -rf "$DIR"
+}
+trap rmdata EXIT INT TERM
+
+rsync -a --delete /home/paolo/browsers/bronce_default/  "$DIR"
+
+firejail --private="$DIR"  firefox --no-remote
+
