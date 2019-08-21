@@ -3,6 +3,7 @@
 # from __future__ import print_function #(if python2)
 
 import sys
+import os
 
 
 def eprint(*args, **kwargs):
@@ -16,8 +17,10 @@ def main(argv=None):
         If it's a normal function argv won't be None if started by the OS
         argv is initialized by the command line arguments
     """
+    prgname = os.path.basename(__file__) if '__file__' in globals() else 'prg'
     if argv is None:
         argv = sys.argv
+
     return 0
 
 if __name__ == "__main__":
