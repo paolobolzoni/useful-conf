@@ -1,0 +1,50 @@
+# Maintainer: Paolo Bolzoni <paolo.bolzoni.brown@gmail.com>
+
+pkgname=nordvpn
+pkgver=3.3.1_1
+pkgrel=1
+epoch=
+pkgdesc="Nordvpn official client"
+arch=('x86_64')
+url="https://nordvpn.com/"
+license=('proprietary')
+groups=()
+depends=('glibc')
+makedepends=('rpmextract')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://repo.nordvpn.com/yum/nordvpn/centos/x86_64/Packages/n/$pkgname-${pkgver//_/-}.x86_64.rpm")
+noextract=()
+md5sums=('114f64009dd791dc829e2b4d55a9f47d')
+validpgpkeys=()
+
+#prepare() {
+#	cd "$pkgname-$pkgver"
+#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+#}
+#
+#build() {
+#	cd "$pkgname-$pkgver"
+#	./configure --prefix=/usr
+#	make
+#}
+#
+#check() {
+#	cd "$pkgname-$pkgver"
+#	make -k check
+#}
+
+package() {
+    cp -r usr var "$pkgdir"
+    cd "$pkgdir"
+    mv ./usr/sbin/nordvpnd ./usr/bin
+    rmdir ./usr/sbin
+    rm -fr ./usr/lib/.build-id
+}
