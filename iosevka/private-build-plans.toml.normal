@@ -1,0 +1,46 @@
+# parameters.toml
+# width = 500
+
+[buildPlans.iosevka-paopao]
+family = "Iosevka Paopao"
+
+design = [ "no-ligation", "cv01", "cv13", "cv17", "cv19", "cv20", "cv23", "cv24",
+"cv26", "cv28", "cv30", "cv32", "cv35", "cv37", "cv38", "cv41", "cv43", "cv44",
+"cv46", "cv49", "cv51", "cv52", "cv56", "cv58", "cv63", "cv65", "cv66", "cv69",
+"cv72", "cv74", "cv76", "cv78", "cv81", "cv83", "cv87" ]
+
+italic = [ "italic-only",
+"cv04",
+"cv08",
+"cv27",
+"cv33",
+"cv34",
+"cv40",
+"cv42",
+"cv53",
+"cv70"
+]
+
+# Customize styles
+hintParams = ["-a", "sss"]
+
+
+[buildPlans.iosevka-paopao.weights.light]
+shape = 200
+menu  = 200
+css   = 200
+
+[buildPlans.iosevka-paopao.weights.regular]
+shape = 400
+menu  = 400
+css   = 400
+
+[buildPlans.iosevka-paopao.weights.bold]
+shape = 800
+menu  = 800
+css   = 800
+
+[buildPlans.iosevka-paopao.slants]
+upright = "normal"
+italic = "italic"
+
