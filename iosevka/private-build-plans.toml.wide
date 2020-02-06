@@ -1,5 +1,5 @@
 # parameters.toml
-# width = 500
+# width = 600
 
 [buildPlans.iosevka-wpaopao]
 family = "Iosevka wPaopao"
