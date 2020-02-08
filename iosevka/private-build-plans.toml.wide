@@ -14,14 +14,13 @@ family = "Iosevka wPaopao"
 
 design = [ "no-ligation", "cv01", "cv13", "cv17", "cv19", "cv20", "cv23",
 "cv24", "cv26", "cv27", "cv30", "cv32", "cv35", "cv37", "cv38", "cv41", "cv43",
-"cv44", "cv46", "cv49", "cv51", "cv52", "cv56", "cv58", "cv61", "cv63", "cv65",
+"cv44", "cv46", "cv49", "cv51", "cv52", "cv56", "cv58", "cv63", "cv65",
 "cv66", "cv69", "cv72", "cv74", "cv76", "cv78", "cv81", "cv83", "cv87" ]
 
 italic = [ "italic-only", "cv02", "cv04", "cv34", "cv40", "cv42", "cv53",
 "cv70" ]
 
 hintParams = ["-a", "sss"]
-
 
 [buildPlans.iosevka-wpaopao.weights.light]
 shape = 300
@@ -30,13 +29,13 @@ css   = 300
 
 [buildPlans.iosevka-wpaopao.weights.regular]
 shape = 500
-menu  = 500
-css   = 500
+menu  = 400
+css   = 400
 
 [buildPlans.iosevka-wpaopao.weights.bold]
 shape = 900
-menu  = 900
-css   = 900
+menu  = 700
+css   = 700
 
 [buildPlans.iosevka-wpaopao.slants]
 upright = "normal"
