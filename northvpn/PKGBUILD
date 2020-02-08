@@ -1,7 +1,7 @@
 # Maintainer: Paolo Bolzoni <paolo.bolzoni.brown@gmail.com>
 
 pkgname=nordvpn
-pkgver=3.3.1_3
+pkgver=3.6.0_5
 pkgrel=1
 epoch=
 pkgdesc="Nordvpn official client"
@@ -22,8 +22,8 @@ install=
 changelog=
 source=("https://repo.nordvpn.com/yum/nordvpn/centos/x86_64/Packages/n/$pkgname-${pkgver//_/-}.x86_64.rpm")
 noextract=()
-md5sums=('05767bf69c0e01cdd56ae076a7c8886c')
 validpgpkeys=()
+md5sums=('b80b5d41fb4cc267aad40612c8007cd2')
 
 #prepare() {
 #	cd "$pkgname-$pkgver"
