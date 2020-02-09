@@ -10,6 +10,8 @@ int opt_parse(int argc, char** argv) {
 
 
 int main(int argc, char** argv) {
+    //unless one needs C-style I/O
+    std::ios_base::sync_with_stdio(false);
     try {
         return opt_parse(argc, argv);
     } catch (std::exception& e) {
