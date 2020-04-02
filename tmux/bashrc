@@ -14,15 +14,18 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 alias ls='ls --color=auto'
-alias ll='ls -Al'
+alias ll='ls -Alh'
 alias s='xdg-open'
-alias g++='g++ -std=c++14 -Wall -Wextra -pedantic -Wredundant-decls -Wdisabled-optimization -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -Wold-style-cast -Wzero-as-null-pointer-constant -Werror=return-type'
+alias g++='g++ -std=c++17 -Wall -Wextra -pedantic -Wredundant-decls -Wdisabled-optimization -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -Wold-style-cast -Wzero-as-null-pointer-constant -Werror=return-type'
 
+RED=$(tput setaf 1)
+NORMAL=$(tput sgr0)
 function nonzero_return() {
     RETVAL=$?
-    [ $RETVAL -ne 0 ] && echo "$RETVAL"
+    [ $RETVAL -ne 0 ] && echo "$RED$RETVAL$NORMAL "
 }
-export PS1="\[\e[31m\]\`nonzero_return\`\[\e[m\] \w \\$ "
+export PS1="\`nonzero_return\`\w \\$ "
+
 
 
 [ -z "$TMUX" ] && /usr/bin/tmux && return
