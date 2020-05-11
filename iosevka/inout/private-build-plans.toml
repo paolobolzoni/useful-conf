@@ -1,7 +1,6 @@
 # parameters.toml
-# width = 500
 
-# to remove the top serif from the j (as juliet) edit letters-unified-basic.ptl at this section:
+# to remove the top serif from the j (as juliett) edit letters-unified-basic.ptl at this section:
 # sketch # dotlessj.serifed
 #     include markset.p
 #     include glyphs.'dotlessj.straight' AS_BASE
@@ -12,19 +11,29 @@
 [buildPlans.iosevka-paopao]
 family = "Iosevka Paopao"
 
-design = [ "no-ligation", "cv01", "cv13", "cv17", "cv19", "cv20", "cv23",
-"cv24", "cv26", "cv27", "cv29", "cv33", "cv35", "cv37", "cv38", "cv41", "cv43",
-"cv44", "cv46", "cv49", "cv51", "cv52", "cv56", "cv58", "cv62", "cv65",
-"cv66", "cv69", "cv71", "cv74", "cv76", "cv78", "cv81", "cv83", "cv87" ]
+design = [ "sp-fixed",
+"v-a-doublestorey", "v-f-straight", "v-g-opendoublestorey", "v-i-line",
+"v-j-serifed", "v-l-tailed", "v-k-curly", "v-m-shortleg", "v-r-top-serifed",
+"v-t-cross", "v-v-straight", "v-w-curly", "v-x-curly", "v-y-cursive",
+"v-turn-v-curly", "v-capital-g-tooth", "v-capital-q-straight",
+"v-capital-y-curly", "v-zero-reverse-slashed", "v-one-base", "v-three-flattop",
+"v-seven-serifed", "v-nine-closed-contour", "v-eszet-sulzbacher",
+"v-lambda-curly", "v-tilde-low", "v-asterisk-low", "v-underscore-high",
+"v-paragraph-low", "v-caret-high", "v-brace-curly", "v-numbersign-upright",
+"v-at-short", "v-dollar-open", "v-percent-dots", "v-lig-ltgteq-flat"
+]
 
-italic = [ "italic-only", "cv02", "cv04", "cv34", "cv40", "cv42", "cv53",
-"cv70" ]
+
+italic = [ "italic-only",
+"v-a-singlestorey", "v-f-tailed", "v-i-italic", "v-k-cursive",
+"v-capital-q-taily", "v-eszet-traditional", "v-nine-turned-six"
+]
 
 hintParams = ["-a", "sss"]
 
 
 [buildPlans.iosevka-paopao.weights.light]
-shape = 200
+shape = 300
 menu  = 300
 css   = 300
 
