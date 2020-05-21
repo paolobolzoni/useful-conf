@@ -3,10 +3,21 @@ set -euo pipefail
 IFS=$'\n\t'
 
 
-cd /home/build/Iosevka
-git pull
-git reset --hard HEAD
+#cd /home/build/Iosevka
+#git pull
+#git reset --hard HEAD
 
+
+cd /home/build/external
+if [ -d Iosevka ] ;then
+    IOS=/home/build/external/Iosevka
+
+    cd ./Iosevka
+    git pull
+    npm install
+else
+    IOS=/home/build/Iosevka
+fi
 
 cd /home/build/external
 if [ -f settings ] ;then
@@ -18,11 +29,11 @@ fi
 
 if [ -f private-build-plans.toml ] ;then
   private=yes
-  cp private-build-plans.toml /home/build/Iosevka
+  cp private-build-plans.toml "$IOS"
 fi
 
 
-cd /home/build/Iosevka
+cd "$IOS"
 if [ ! -z ${commandline+x} ] ;then
     sh -c $commandline
 else
@@ -37,3 +48,4 @@ else
 fi
 
 cp -r dist/* /home/build/external
+echo -ne '\n'

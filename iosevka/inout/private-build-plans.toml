@@ -1,36 +1,28 @@
 # parameters.toml
 
-# to remove the top serif from the j (as juliett) edit letters-unified-basic.ptl at this section:
-# sketch # dotlessj.serifed
-#     include markset.p
-#     include glyphs.'dotlessj.straight' AS_BASE
-#     include : LeftwardTopSerif (MIDDLE + JBALANCE) XH LONGJUT
-# and comment (or remove) the last line.
-
-
 [buildPlans.iosevka-paopao]
 family = "Iosevka Paopao"
 
 design = [ "sp-fixed",
 "v-a-doublestorey", "v-f-straight", "v-g-opendoublestorey", "v-i-line",
-"v-j-serifed", "v-l-tailed", "v-k-curly", "v-m-shortleg", "v-r-top-serifed",
+"v-j-straight", "v-l-tailed", "v-k-curly", "v-m-shortleg", "v-r-top-serifed",
 "v-t-cross", "v-v-straight", "v-w-curly", "v-x-curly", "v-y-cursive",
 "v-turn-v-curly", "v-capital-g-tooth", "v-capital-q-straight",
 "v-capital-y-curly", "v-zero-reverse-slashed", "v-one-base", "v-three-flattop",
 "v-seven-serifed", "v-nine-closed-contour", "v-eszet-sulzbacher",
 "v-lambda-curly", "v-tilde-low", "v-asterisk-low", "v-underscore-high",
-"v-paragraph-low", "v-caret-high", "v-brace-curly", "v-numbersign-upright",
+"v-paragraph-low", "v-caret-low", "v-brace-curly", "v-numbersign-upright",
 "v-at-short", "v-dollar-open", "v-percent-dots", "v-lig-ltgteq-flat"
 ]
 
 
 italic = [ "italic-only",
-"v-a-singlestorey", "v-f-tailed", "v-i-italic", "v-k-cursive",
+"v-a-singlestorey", "v-f-tailed", "v-i-italic", "v-j-serifed", "v-k-cursive",
 "v-capital-q-taily", "v-eszet-traditional", "v-nine-turned-six"
 ]
 
-hintParams = ["-a", "sss"]
 
+hintParams = ["-a", "sss"]
 
 [buildPlans.iosevka-paopao.weights.light]
 shape = 300

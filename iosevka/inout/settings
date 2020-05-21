@@ -1,3 +1,4 @@
 
 commandline='npm run build -- ttf::iosevka-paopao'
+#commandline='false'
 

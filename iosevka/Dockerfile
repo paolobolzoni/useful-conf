@@ -46,15 +46,18 @@ RUN pikaur --noconfirm -S afdko
 RUN pikaur --noconfirm -S otfcc && \
     pikaur --noconfirm --mflags=--skippgpcheck -S ttfautohint && \
     pikaur --noconfirm -S nodejs npm
+RUN pikaur --noconfirm -S hicolor-icon-theme-git
+#RUN pikaur --noconfirm -S fontforge
 
 
 WORKDIR /home/build
-# toggle the folowing line to update the image to the lastest Iosevka
-#RUN true
-RUN git clone --recursive --depth=1 'https://github.com/be5invis/Iosevka.git'
+RUN git clone -b dev --recursive --depth=1 'https://github.com/be5invis/Iosevka.git'
 WORKDIR ./Iosevka
 RUN npm install
 
+# toggle the folowing line to update the image to the lastest Iosevka
+#RUN true
+RUN git pull
 
 # make directory for input and output
 WORKDIR /home/build
@@ -63,6 +66,7 @@ RUN mkdir external
 
 # clean up
 USER root
+#RUN pacman --noconfirm -Rns python2-pip python-pip python2-wheel python-wheel python-pytest python2-pytest pikaur autoconf automake binutils bison fakeroot flex gcc groff m4 make patch pkgconf texinfo && \
 RUN pacman --noconfirm -Rns python2-pip python-pip python2-wheel python-wheel python-pytest python2-pytest pikaur autoconf automake binutils bison fakeroot flex gcc groff libtool m4 make patch pkgconf texinfo && \
     rm -rf /home/build/.cache /home/build/python-fontpens /home/build/pikaur /home/build/.local && \
     yes | pacman -Scc
