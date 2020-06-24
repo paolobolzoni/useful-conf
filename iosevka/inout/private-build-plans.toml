@@ -4,22 +4,24 @@
 family = "Iosevka Paopao"
 
 design = [ "sp-fixed",
-"v-a-doublestorey", "v-f-straight", "v-g-opendoublestorey", "v-i-line",
-"v-j-straight", "v-l-tailed", "v-k-curly", "v-m-shortleg", "v-r-top-serifed",
-"v-t-cross", "v-v-straight", "v-w-curly", "v-x-curly", "v-y-cursive",
-"v-turn-v-curly", "v-capital-g-tooth", "v-capital-q-straight",
-"v-capital-y-curly", "v-zero-reverse-slashed", "v-one-base", "v-three-flattop",
-"v-seven-serifed", "v-nine-closed-contour", "v-eszet-sulzbacher",
-"v-lambda-curly", "v-tilde-low", "v-asterisk-low", "v-underscore-high",
-"v-paragraph-low", "v-caret-low", "v-brace-curly", "v-numbersign-upright",
-"v-at-short", "v-dollar-open", "v-percent-dots", "v-lig-ltgteq-flat"
-]
+"v-a-doublestorey", "v-ampersand-upper-open", "v-asterisk-low", "v-at-short",
+"v-brace-curly", "v-capital-d-more-rounded", "v-capital-g-tooth",
+"v-capital-q-straight", "v-capital-y-straight", "v-caret-low", "v-dollar-open",
+"v-eszet-sulzbacher", "v-four-semi-open", "v-f-straight",
+"v-g-opendoublestorey", "v-i-line", "v-j-straight", "v-k-curly",
+"v-lambda-curly", "v-lig-ltgteq-flat", "v-l-tailed", "v-m-shortleg",
+"v-nine-closed-contour", "v-numbersign-upright", "v-one-base",
+"v-paragraph-low", "v-paren-large-contour", "v-percent-dots",
+"v-r-top-serifed", "v-seven-serifed", "v-t-cross", "v-three-flattop",
+"v-tilde-low", "v-turn-v-curly", "v-underscore-high", "v-v-straight",
+"v-w-curly", "v-x-curly", "v-y-cursive", "v-zero-long-dotted" ]
 
 
 italic = [ "italic-only",
-"v-a-singlestorey", "v-f-tailed", "v-i-italic", "v-j-serifed", "v-k-cursive",
-"v-capital-q-taily", "v-eszet-traditional", "v-nine-turned-six"
-]
+"v-a-singlestorey", "v-ampersand-lower-open", "v-capital-q-taily",
+"v-eszet-traditional", "v-f-tailed", "v-i-italic", "v-j-serifed",
+"v-k-cursive", "v-nine-straight-bar", "v-q-tailed", "v-six-closed-contour",
+"v-t-standard" ]
 
 
 hintParams = ["-a", "sss"]
