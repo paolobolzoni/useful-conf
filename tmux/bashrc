@@ -17,6 +17,9 @@ alias ls='ls --color=auto'
 alias ll='ls -Alh'
 alias s='xdg-open'
 alias g++='g++ -std=c++17 -Wall -Wextra -pedantic -Wredundant-decls -Wdisabled-optimization -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wsign-promo -Wold-style-cast -Wzero-as-null-pointer-constant -Werror=return-type'
+alias 'extip4'='dig -4 @resolver1.opendns.com A myip.opendns.com +short'
+alias 'extip6'='dig -6 @resolver1.opendns.com AAAA myip.opendns.com +short'
+alias 'extip'='extip4 ; extip6'
 
 RED=$(tput setaf 1)
 NORMAL=$(tput sgr0)
