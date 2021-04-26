@@ -51,13 +51,10 @@ RUN pikaur --noconfirm -S hicolor-icon-theme-git
 
 
 WORKDIR /home/build
+#RUN true
 RUN git clone -b dev --recursive --depth=1 'https://github.com/be5invis/Iosevka.git'
 WORKDIR ./Iosevka
 RUN npm install
-
-# toggle the folowing line to update the image to the lastest Iosevka
-#RUN true
-RUN git pull
 
 # make directory for input and output
 WORKDIR /home/build
