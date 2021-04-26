@@ -1,0 +1,170 @@
+\documentclass[notitle,nologo]{europecv}
+\usepackage[a4paper,top=1.27cm,left=1cm,right=1cm,bottom=2cm]{geometry}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{relsize}
+
+\usepackage{tikz}
+
+\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
+
+\hypersetup{
+    pdfinfo={
+        Title={Curriculum Vitae},
+        Subject={ },
+        Author={Paolo Bolzoni},
+        Creator={ },
+        Producer={ },
+    }
+}
+
+\def\ifmonospace{\ifdim\fontdimen3\font=0pt }
+\def\Cpp{%
+    \ifmonospace%
+    C++%
+    \else%
+    C\kern-.1em\raise.40ex\hbox{\smaller[2]{++}}%
+    \fi%
+\spacefactor1000 }
+\def\PhD{{\smaller[0.5]P}h{\smaller[0.5]D}}
+\def\POI{{\smaller[0.5]POI}}
+\newcommand\Acr[1]{{\smaller[0.5]#1}}
+
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase }
+\setmainfont{Tinos}
+\setsansfont{Arimo}
+\setmonofont{Source Code Pro}
+\newfontface\jfont{IPAexMincho}
+\selectfont
+
+
+\ecvlastname{BOLZONI}
+\ecvfirstname{Paolo Ph.D.}
+\ecvaddress{Via Provinciale 4; 43018 Sissa Trecasali PR; Italy}
+\ecvtelephone{+39 3470683057}
+\ecvfax{}
+\ecvemail{paolo.bolzoni.brown@gmail.com}
+\ecvnationality{Italian}
+\ecvdateofbirth{1981--06--02}
+\ecvgender{Male}
+\ecvbeforepicture{\raggedleft}
+\ecvpicture[height=45mm]{picture.jpg}
+\ecvafterpicture{\ecvspace{-45mm}}
+
+\begin{document}
+\selectlanguage{english}
+
+\begin{europecv}
+
+\ecvpersonalinfo %[4mm]
+
+\ecvsection{Work experience}
+\ecvitem{2021/02}{High-School Computer Science Teacher, Viadana, Mantova}
+\ecvitem{2019/12--2020/12}{Software developer and R\&D for Cagla Inc., Toyota City}
+\ecvitem{2018/09--2019}{Postdoctoral Researcher at Dublin City University}
+\ecvitem{2018/03--2018/09}{Software developer and R\&D for Energee3, Reggio Emilia}
+\ecvitem{2018/01}{Preparing Lesson Material for teaching \Acr{MISRA}~C 2012 guidelines}
+\ecvitem{2016--2017}{Teaching Assistant for Information Security course (twice) at Uni\Acr{BZ}}
+\ecvitem{2013--2017}{\PhD{} Student, Free University of Bolzano--Bozen}
+\ecvitem{2009--2012}{Tutoring (on voluntary basis) of Uni\Acr{PR} students for \Cpp{} and Algorithms and Data Structures}
+\ecvitem{2005--2012}{Week-end waiter, Agriturismo al Cason}
+\ecvitem{2004--2008}{Summer jobs}
+\ecvitem{2002--2004}{Network Manager, Manghi S.p.A.}
+
+
+\ecvsection{Education}
+\ecvitem{2018/05}{Computer Science Ph.D.}
+\ecvitem{2015--2016}{Study exchange with the Nagoya University (\jfont{名古屋大学})}
+\ecvitem{2014}{Participated to the 17th \Acr{IPCO} summer school and conference (Integer Programming and Combinatorial Optimization)}
+\ecvitem{2013--2017}{\PhD{} Student, Free University of Bolzano--Bozen}
+\ecvitem{Research topic}{Itinerary planning for Tourist Applications}
+\ecvitem{2012}{Master Degree in Computer Science 110/110 cum laude, Universit\`a degli Studi di Parma}
+\ecvitem{2009}{Bachelor Degree in Computer Science 103/110, Universit\`a degli Studi di Parma}
+\ecvitem{2002}{Completed a post high-school accountancy course}
+\ecvitem{2000}{Completed high-school in accountancy}
+
+
+\ecvsection{Publications}
+\ecvitem{\Acr{FGCS SI} 2019}{Improving Orienteering-based Tourist Trip Planning with Social Sensing}
+\ecvitem{\Acr{SSTD} 2017}{Hybrid Best-First Greedy Search for Orienteering with Category Constraints}
+\ecvitem{\Acr{DEXA} 2017}{Itinerary Planning with Category Constraints Using a Probabilistic Approach}
+\ecvitem{\Acr{GIS}cience 2016}{Fast Computation of Continental-Sized Isochrones}
+\ecvitem{\Acr{ACM SIGSPATIAL} 2014}{Efficient Itinerary Planning with Category Constraints}
+
+
+\ecvsection{Technical skills and competences}
+\ecvitem{Systems}{\Acr{GNU}/Linux, Docker, Postgis}
+\ecvitem{Development}{\Cpp, Bash, Python, Java, SQL, \LaTeX, front and backend Javascript}
+\ecvitem{Techniques}{Object Oriented, functional, generic patterns, idiomatic code, command line}
+%\ecvitem{Driving license}{Italian B (cars)}
+
+\ecvsection{Talks}
+\ecvitem{2017}{Prepared the talks for \emph{Hybrid Best-First Greedy Search for
+Orienteering with Category Constraints} paper at \Acr{SSTD} 2017 and
+for \emph{Itinerary Planning with Category Constraints Using a Probabilistic
+Approach} paper at \Acr{DEXA} 2017}
+\ecvitem{2014}{Presented \emph{Efficient Itinerary Planning with Category
+Constraints} paper at \Acr{ACM SIGSPATIAL} conference}
+\ecvitem{2012}{Presented my \PhD{} work at the DB retreat in Racines, which was a
+joint event of the Universities of Zurich and Bolzano--Bozen}
+\ecvitem{2009}{Code good practices and code cleanness guidelines presentation
+in the context of \Acr{ECLAIR}\footnote{\url{https://en.wikipedia.org/wiki/ECLAIR}}, a platform for
+the static analysis of C programs}
+
+
+\ecvsection{Research and thesis work}
+\ecvitem{\PhD{} research topic}{\emph{Itinerary planning for Tourist Applications}}
+\ecvitem{}{Premade touristic tours are often sub-optimal because the taste of
+the tourists are very varied. To implement a tourist tour guide we are studying
+and developing new approximate algorithms for the Orienteering with Categories
+problem. It is an extension of the \Acr{NP}-hard Orienteering problem that
+in its turn is a mix between the Traveling Salesman and the Knapsack problems.
+The first approach to solve this problem using clusters had brought to the
+publication of the paper \emph{Efficient Itinerary Planning with Category
+Constraints} at \Acr{ACMGIS GIS} Dallas conference in 2014.  The second
+approach uses a priority deque on a custom solution space and had brought to
+the paper \emph{Hybrid Best-First Greedy Search for Orienteering with Category
+Constraints} at \Acr{SSTD} 2017.  An experimental approach using
+probabilistic graph pruning had brought to the paper \emph{Itinerary Planning
+with Category Constraints Using a Probabilistic Approach} at \Acr{DEXA}
+2017. The idea of extending the concept of memoization from functions results
+to algorithms steps had brought to a tangentially related result of speeding up
+isochrone computations and the paper \emph{Fast Computation of
+Continental-Sized Isochrones} at GIScience 2016.}
+
+\ecvitem{Master Thesis}{\emph{Design and implementation of a distributed system
+for computations on matrices with entries in semirings}}
+\ecvitem{}{The aim of a distributed system for semiring-matrices computation is
+to implement classic graph algorithms using mathematical computations directly
+over adjacency matrices as they are easier to parallelize than dynamic
+programming approaches.  The work was about design and implement a
+message-based implementation using the \Acr{\O MQ} concurrency framework.}
+
+\ecvitem{Bachelor Thesis}{\emph{Automatic Checking of Coding Rules}}
+\ecvitem{}{Analysis of good coding rules for the C and \Cpp{} languages from
+various sources, including \Acr{MISRA} and \Acr{HICPP} in order to
+understand the algorithmic needs to make an automatic checker and the relation
+between those checkers and rules violations. For example, to make an automatic
+checker for a rule like ``Do not use \texttt{goto}'' it only needs the token
+stream; instead for a rule like ``The \texttt{U} suffix shall used for all
+unsigned integers literals'' it needs information from the hardware and the C
+type system.}
+
+\ecvsection{Languages}
+%\ecvmothertongue{Italian}
+
+%\ecvlanguage{English}{\ecvBTwo}{\ecvCOne}{\ecvBTwo}{\ecvCTwo}{\ecvCTwo}
+\ecvitem{\textbf{Italian}}{Native}
+\ecvitem{\textbf{English}}{Fluent}
+\ecvitem{\textbf{Japanese}}{Beginner}
+
+\ecvitem{}{}
+
+\ecvitem{}{{\bf Personal Interest}}
+\ecvitem{}{Meditation, hiking, programming, travels, board games, reading}
+
+\end{europecv}
+
+\end{document}
